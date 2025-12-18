@@ -7,7 +7,7 @@ import com.matchmaking.metrics.MatchmakingMetrics;
 import com.matchmaking.model.Player;
 import com.matchmaking.model.QueueEntry;
 import com.matchmaking.model.Role;
-import com.matchmaking.repository.OptimizedQueueRepository;
+import com.matchmaking.repository.QueueRepository;
 import com.matchmaking.service.QueueService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +24,12 @@ import java.util.Map;
 @RequestMapping("/api/queue")
 public class QueueController {
     private final QueueService queueService;
-    private final OptimizedQueueRepository queueRepository;
+    private final QueueRepository queueRepository;
     private final MatchmakingMetrics metrics;
     private final Clock clock;
 
     public QueueController(QueueService queueService,
-                           OptimizedQueueRepository queueRepository,
+                           QueueRepository queueRepository,
                            MatchmakingMetrics metrics,
                            Clock clock) {
         this.queueService = queueService;

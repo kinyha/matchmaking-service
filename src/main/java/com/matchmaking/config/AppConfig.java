@@ -4,9 +4,11 @@ import com.matchmaking.algorithm.MmrWindowFinder;
 import com.matchmaking.repository.InMemoryMatchRepository;
 import com.matchmaking.repository.MatchRepository;
 import com.matchmaking.repository.OptimizedQueueRepository;
+import com.matchmaking.repository.QueueRepository;
 import com.matchmaking.service.QueueService;
 import com.matchmaking.service.RoleAssignmentService;
 import com.matchmaking.service.TeamBalancerService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,7 +28,8 @@ public class AppConfig {
     }
 
     @Bean
-    public OptimizedQueueRepository queueRepository() {
+    @ConditionalOnProperty(name = "matchmaking.persistence", havingValue = "memory", matchIfMissing = true)
+    public QueueRepository inMemoryQueueRepository() {
         return new OptimizedQueueRepository();
     }
 
@@ -36,7 +39,7 @@ public class AppConfig {
     }
 
     @Bean
-    public QueueService queueService(OptimizedQueueRepository queueRepository, Clock clock) {
+    public QueueService queueService(QueueRepository queueRepository, Clock clock) {
         return new QueueService(queueRepository, clock);
     }
 

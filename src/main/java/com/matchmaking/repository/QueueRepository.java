@@ -2,7 +2,9 @@ package com.matchmaking.repository;
 
 import com.matchmaking.model.QueueEntry;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface QueueRepository {
@@ -19,4 +21,8 @@ public interface QueueRepository {
     int size();
 
     void clear();
+
+    default Map<Integer, Integer> getBucketDistribution() {
+        return Collections.emptyMap();
+    }
 }

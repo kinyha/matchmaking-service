@@ -10,7 +10,7 @@ spring:
 
 # Matchmaking configuration
 matchmaking:
-  persistence: memory  # Options: memory, redis
+  persistence: redis  # Options: memory, redis
 
 # Actuator endpoints
 management:

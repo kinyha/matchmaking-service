@@ -1,5 +1,6 @@
 package com.matchmaking.config;
 
+import com.matchmaking.repository.QueueRepository;
 import com.matchmaking.repository.RedisQueueRepository;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +25,7 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisQueueRepository redisQueueRepository(RedisTemplate<String, String> redisTemplate) {
+    public QueueRepository redisQueueRepository(RedisTemplate<String, String> redisTemplate) {
         return new RedisQueueRepository(redisTemplate);
     }
 }

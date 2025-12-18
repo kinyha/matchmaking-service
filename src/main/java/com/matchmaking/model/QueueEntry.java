@@ -1,5 +1,7 @@
 package com.matchmaking.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.Instant;
 import java.util.Objects;
 
@@ -16,6 +18,7 @@ public record QueueEntry(
         return new QueueEntry(player, queueStartTime);
     }
 
+    @JsonIgnore
     public String getPlayerId() {
         return player.id();
     }

@@ -46,4 +46,19 @@ test {
         events "passed", "skipped", "failed"
         showStandardStreams = true
     }
+    jvmArgs = [
+        '--enable-native-access=ALL-UNNAMED',
+        '--add-opens=java.base/java.lang=ALL-UNNAMED',
+        '--add-opens=java.base/sun.misc=ALL-UNNAMED',
+        '-XX:+EnableDynamicAgentLoading'
+    ]
+}/
+
+bootRun {
+    jvmArgs = [
+        '--enable-native-access=ALL-UNNAMED',
+        '--add-opens=java.base/java.lang=ALL-UNNAMED',
+        '--add-opens=java.base/sun.misc=ALL-UNNAMED',
+        '-XX:+EnableDynamicAgentLoading'
+    ]
 }
